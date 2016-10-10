@@ -1,0 +1,11 @@
+<dom-module id="markdown-app">
+    <template>
+        <input type="file" on-change="inputFileChangeHandler">
+        <button on-tap="preview">preview</button>
+        <button on-tap="print">print</button>
+    </template>
+
+    <script>
+        require('../dist/markdown-app.js')
+    </script>
+</dom-module>

@@ -1,0 +1,18 @@
+{
+    "presets": [
+        "es2017",
+        "stage-3"
+    ],
+    "plugins": [
+        [
+            "transform-es2015-modules-commonjs",
+            {
+                "allowTopLevelThis": false,
+                "strict": true,
+                "loose": false
+            }
+        ]
+    ],
+    "highlightCode": true,
+    "sourceMaps": true
+}

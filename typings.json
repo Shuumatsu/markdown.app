@@ -1,0 +1,9 @@
+{
+  "name": "comic",
+  "dependencies": {},
+  "globalDependencies": {
+    "github-electron": "registry:dt/github-electron#1.4.2+20161006163813",
+    "gulp": "registry:dt/gulp#3.8.0+20160907112908",
+    "node": "registry:dt/node#6.0.0+20161008175459"
+  }
+}
