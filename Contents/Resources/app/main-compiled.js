@@ -85,22 +85,23 @@ _electron.app.on('activate', () => {
     }
 });
 
+let previewWindow;
 _electron.ipcMain.on('request-preview-window', () => {
-    let win = new _electron.BrowserWindow({
+    previewWindow = new _electron.BrowserWindow({
         height: 800,
         width: 1280
     });
 
-    win.on('closed', () => {
-        win = null;
+    previewWindow.on('closed', () => {
+        previewWindow = null;
     });
 
-    win.loadURL(`file://${ __dirname }/windows/preview.html`);
+    previewWindow.loadURL(`file://${ __dirname }/windows/preview.html`);
 });
 
 _electron.ipcMain.on('print-as-pdf', (() => {
     var _ref = _asyncToGenerator(function* (evt, filename) {
-        const win = _electron.BrowserWindow.fromWebContents(evt.sender);
+        const win = previewWindow;
 
         let [err, buffer] = yield promisify(win.webContents.printToPDF, win.webContents)({
             pageSize: 'A4'

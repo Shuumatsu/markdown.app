@@ -79,21 +79,22 @@ app.on('activate', () => {
     }
 });
 
+let previewWindow;
 ipcMain.on('request-preview-window', () => {
-    let win = new BrowserWindow({
+    previewWindow = new BrowserWindow({
         height: 800,
         width: 1280,
     });
 
-    win.on('closed', () => {
-        win = null;
+    previewWindow.on('closed', () => {
+        previewWindow = null;
     });
 
-    win.loadURL(`file://${__dirname}/windows/preview.html`);
+    previewWindow.loadURL(`file://${__dirname}/windows/preview.html`);
 });
 
 ipcMain.on('print-as-pdf', async(evt, filename) => {
-    const win = BrowserWindow.fromWebContents(evt.sender);
+    const win = previewWindow;
 
     let [err, buffer] = await promisify(win.webContents.printToPDF, win.webContents)({
         pageSize: 'A4'
